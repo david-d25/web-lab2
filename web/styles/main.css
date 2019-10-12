@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #e1e1ed;
+  font-family: sans-serif;
+}
+
+input[type="text"] {
+  width: 100%;
+}
+
+.container {
+  width: 950px;
+  margin: auto;
+}
+
+.header {
+  background: #3939b8;
+  font-family: monospace;
+  color: white;
+  padding: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+.content {
+  padding-top: 25px;
+}
+
+.graph-view {
+  width: 500px;
+  height: 500px;
+  margin: 0 50px;
+  user-select: none;
+}
+
+.panel {
+  background: rgba(255, 255, 255, .5);
+  padding: 10px;
+  margin: 5px 5px 10px 5px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+}
+
+.err-msg {
+  color: darkred;
+}
+
+.panel label {
+  margin: 5px 0;
+}
+
+.panel__title {
+  text-align: center;
+}
+
+.panel__content {
+  display: flex;
+  justify-content: space-around;
+}
+
+#y {
+  text-align: center;
+  margin: 3% 0;
+}
+
+.graph-view-wr {
+  padding-bottom: 50px;
+}
+
+.graph-view__text-x {
+  dominant-baseline: text-after-edge;
+  text-anchor: middle;
+}
+
+.graph-view__text-y {
+  dominant-baseline: middle;
+  text-anchor: start;
+}
+
+.content > .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.submit-btn {
+  background: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 24px;
+  max-width: 70%;
+  margin: auto;
+  display: block;
+  padding: 10px 20px;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, .1);
+  transition: box-shadow 300ms, background 300ms;
+  outline: none;
+}
+
+.submit-btn:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+}
+
+.submit-btn:active {
+  background: rgb(240, 240, 240);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .4);
+}
+
+@media (max-width: 1080px) {
+  .container {
+    width: 680px;
+  }
+
+  .graph-view {
+    width: 370px;
+    height: 370px;
+  }
+}
+
+@media (max-width: 720px) {
+  .container {
+    width: 400px;
+  }
+
+  .graph-view {
+    width: 350px;
+    height: 350px;
+    margin: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+  }
+
+  .graph-view {
+    width: 250px;
+    height: 250px;
+    margin: 20px;
+    font-size: 14px;
+  }
+}
