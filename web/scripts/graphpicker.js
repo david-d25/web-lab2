@@ -6,22 +6,38 @@
     let pointer = null;
     let ctx = canvas.getContext('2d');
 
+    let listener = () => {};
+
     let mouseDownFlag = false;
 
-    canvas.addEventListener("click", onMouseEvent);
-    canvas.addEventListener("mousemove", (e) => {if (mouseDownFlag) onMouseEvent(e)});
+    canvas.addEventListener("click", onClick);
+    canvas.addEventListener("mousemove", onDrag);
     canvas.addEventListener("mousedown", () => {mouseDownFlag = true});
     canvas.addEventListener("mouseup", () => {mouseDownFlag = false});
-    canvas.addEventListener("mouseout", () => {mouseDownFlag = false});
+    canvas.addEventListener("mouseout", () => {mouseDownFlag = false; render()});
     ctx.mv = function(x, y) { this.moveTo(x*width, y*height); };
     ctx.ln = function(x, y) { this.lineTo(x*width, y*height); };
     ctx.txt = function(text, x, y) { this.fillText(text, x*width, y*height); };
     render();
 
+    this.setListener = setListener;
     this.setScale = setScale;
+    this.setX = setX;
+    this.setY = setY;
 
-    function onMouseEvent(event) {
+    function onClick(event) {
       if (!scale)
+        return listener(null, null);
+      let {layerX: elemX, layerY: elemY} = event;
+      let {scrollWidth: maxX, scrollHeight: maxY} = canvas;
+      let normalized = {x: elemX/maxX, y: elemY/maxY};
+      pointer = normalizedToGraphCoords(normalized);
+      render();
+      listener(Math.round(pointer.x*1000)/1000, Math.round(pointer.y*1000)/1000);
+    }
+    
+    function onDrag(event) {
+      if (!scale || !mouseDownFlag)
         return;
       let {layerX: elemX, layerY: elemY} = event;
       let {scrollWidth: maxX, scrollHeight: maxY} = canvas;
@@ -138,11 +154,29 @@
       return {x: (point.x*0.4/scale+0.5), y: (-point.y*0.4/scale+0.5)}
     }
 
+    function setX(x) {
+      if (!pointer)
+        pointer = {x: 0, y: 0};
+      pointer.x = x;
+      render();
+    }
+
+    function setY(y) {
+      if (!pointer)
+        pointer = {x: 0, y: 0};
+      pointer.y = y;
+      render();
+    }
+
     function setScale(s) {
       if (!s)
         return;
       scale = s;
       render();
+    }
+
+    function setListener(l) {
+      listener = l;
     }
   }
 })();
