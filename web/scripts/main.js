@@ -21,7 +21,7 @@
   ySelect.addEventListener("change", onYChanged);
   xInput.addEventListener("input", onXChanged);
   submitButton.addEventListener("click", onSubmit);
-  graphPicker.setListener(onGraphClicked);ч
+  graphPicker.setListener(onGraphClicked);
 
   function setErrorMsg(msg) {
     errMsgPanel.innerText = msg;
