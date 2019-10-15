@@ -1,0 +1,48 @@
+.result_error {
+  font-size: calc(14px + 1vw);
+}
+
+.result_hit {
+  font-size: calc(24px + 1vw);
+  margin: 25px;
+}
+
+.result_again {
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px dotted black;
+}
+
+.results {
+  width: 100%;
+  border-spacing: 0;
+  margin: 10px 0;
+}
+
+.results tr {
+  background: rgba(255, 255, 255, .2);
+}
+
+.results tr:nth-child(2n) {
+  background: rgba(255, 255, 255, .6);
+}
+
+.results td, .results th {
+  padding: 15px;
+}
+
+.results th {
+  border-bottom: 1px solid gray;
+}
+
+.left {
+  flex: 2;
+}
+
+.right {
+  flex: 1;
+}
+
+.panel__content {
+  display: block;
+}

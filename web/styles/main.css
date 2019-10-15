@@ -58,6 +58,7 @@ input[type="text"] {
 
 .panel__title {
   text-align: center;
+  display: inline-block;
 }
 
 .panel__content {
@@ -70,25 +71,37 @@ input[type="text"] {
   margin: 3% 0;
 }
 
-.graph-view-wr {
-  padding-bottom: 50px;
+.x_input {
+  text-align: center;
 }
 
-.graph-view__text-x {
-  dominant-baseline: text-after-edge;
-  text-anchor: middle;
+.r_button {
+  background: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .25);
+  cursor: pointer;
+  outline: none;
+  margin: 0 5px;
+  flex: 1;
+  transition: flex 300ms;
 }
 
-.graph-view__text-y {
-  dominant-baseline: middle;
-  text-anchor: start;
+.r_button:active {
+  background: #ccc;
+}
+
+.r_button[state-selected] {
+  background: #999;
+  flex: 2;
 }
 
 .content > .container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .submit-btn {
@@ -113,6 +126,14 @@ input[type="text"] {
 .submit-btn:active {
   background: rgb(240, 240, 240);
   box-shadow: 0 3px 6px rgba(0, 0, 0, .4);
+}
+
+.graph-view-wr {
+  flex: 2;
+}
+
+.controls {
+  flex: 1;
 }
 
 @media (max-width: 1080px) {
