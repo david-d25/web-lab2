@@ -7,15 +7,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/")
+@WebServlet(urlPatterns = {"/control", "/results"})
 public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/pages/form.jsp").forward(request, response);
+        if (request.getServletPath().equals("/results")) {
+            request.getRequestDispatcher("/WEB-INF/pages/result.jsp").forward(request, response);
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        super.doPost(request, response); // todo
+        if (request.getServletPath().equals("/control")) {
+            if (request.getParameter("r") != null && request.getParameter("x") != null && request.getParameter("y") != null) {
+                request.setAttribute("r", request.getParameter("r"));
+                request.setAttribute("x", request.getParameter("x"));
+                request.setAttribute("y", request.getParameter("y"));
+                request.getRequestDispatcher("check").forward(request, response);
+            }
+        }
     }
 }
